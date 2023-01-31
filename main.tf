@@ -12,7 +12,7 @@ resource "aws_vpc" "lifebit_vpc" {
 resource "aws_subnet" "lifebit_subnet" {
   vpc_id            	= aws_vpc.lifebit_vpc.id
   cidr_block        	= "${cidrsubnet(aws_vpc.lifebit_vpc.cidr_block, 3, 1)}"
-  availability_zone 	= "us-east-2a"
+  availability_zone 	= "ca-central-1a"
 
   tags = {
     Name 		= "lifebit-subnets"
@@ -79,7 +79,7 @@ resource "aws_security_group" "lifebit_SG" {
 
 
 resource "aws_instance" "lifebit" {
-  ami           	= "ami-0ff39345bd62c82a5"
+  ami           	= "ami-0dae3a932d090b3de"
   instance_type 	= "t2.micro"
 #  key_name 		= aws_key_pair.lifebit.key_name
   security_groups	= ["${aws_security_group.lifebit_SG.id}"]
